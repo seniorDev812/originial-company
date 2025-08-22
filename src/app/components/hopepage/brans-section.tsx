@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
+import Icon from '../ui/Icon';
 
 type Brand = {
     name: string;
@@ -172,7 +173,11 @@ function BrandCard({ brand }: { brand: Brand }) {
                                 Go To Web Site
                             </div>
                             <div className="icon relative flex justify-center items-center z-2">
-                                <i className="icon-arrow-right h-[14px] text-[14px] md:text-12 md:h-12 sm:w-10 sm:h-10 text-white duration-450 relative z-20 flex sm:!text-white justify-center items-center group-hover:text-white group-hover:rotate-45 group-hover/button:translate-x-5"></i>
+                                <Icon 
+                                    name="icon-arrow-right" 
+                                    className="h-[14px] text-[14px] md:text-12 md:h-12 sm:w-10 sm:h-10 text-white duration-450 relative z-20 flex sm:!text-white justify-center items-center group-hover:text-white group-hover:rotate-45 group-hover/button:translate-x-5" 
+                                    size={14}
+                                />
                             </div>
                         </div>
                     </a>
@@ -187,15 +192,12 @@ export default function BrandsSection() {
     const swiperInstanceRef = useRef<SwiperInstance>(null);
 
     useEffect(() => {
-        // Dynamically import Swiper to avoid SSR issues
+
         const initSwiper = async () => {
             try {
                 const { Swiper } = await import('swiper');
                 const { Navigation, Pagination, Autoplay } = await import('swiper/modules');
-                
-                // Import Swiper styles - these will be handled by the build system
-                // The CSS is already imported globally in the project
-
+           
                 if (swiperRef.current && !swiperInstanceRef.current) {
                     swiperInstanceRef.current = new Swiper(swiperRef.current, {
                         modules: [Navigation, Pagination, Autoplay],
@@ -227,7 +229,7 @@ export default function BrandsSection() {
                             320: {
                                 slidesPerView: 1,
                                 spaceBetween: 0,
-                                width: 230 * 1,
+                                width: 260 * 1,
                             },
                             768: {
                                 slidesPerView: 2,
@@ -334,8 +336,11 @@ export default function BrandsSection() {
                                     <div
                                         className="icon group/item flex items-center justify-center rounded-full cursor-pointer duration-500 ease-samedown ml-auto border border-solid border-black/35 p-19 sm:p-15 group-hover:border-primary group-[&.swiper-button-disabled]:border-black/20">
                                         <div className="icon-arrow w-full h-full">
-                                            <i
-                                                className="icon-arrow-left text-20 h-20 sm:text-16 sm:h-16 text-black/35 group-hover:-translate-x-3 group-hover:text-primary group-[&.swiper-button-disabled]:text-black/35 duration-500 relative z-20 flex justify-center items-center"></i>
+                                            <Icon
+                                                name="icon-arrow-left"
+                                                className="text-20 h-20 sm:text-16 sm:h-16 text-black/35 group-hover:-translate-x-3 group-hover:text-primary group-[&.swiper-button-disabled]:text-black/35 duration-500 relative z-20 flex justify-center items-center"
+                                                size={20}
+                                            />
                                         </div>
                                     </div>
                                 </div>
@@ -344,8 +349,11 @@ export default function BrandsSection() {
                                     <div
                                         className="icon group/item flex items-center justify-center rounded-full cursor-pointer duration-500 ease-samedown ml-auto border border-solid border-black/35 p-19 sm:p-15 group-hover:border-primary group-[&.swiper-button-disabled]:border-black/20">
                                         <div className="icon-arrow w-full h-full">
-                                            <i
-                                                className="icon-arrow-right text-20 h-20 sm:text-16 sm:h-16 text-black/35 group-hover:translate-x-3 group-hover:text-primary group-[&.swiper-button-disabled]:text-black/35 duration-500 relative z-20 flex justify-center items-center"></i>
+                                            <Icon
+                                                name="icon-arrow-right"
+                                                className="text-20 h-20 sm:text-16 sm:h-16 text-black/35 group-hover:translate-x-3 group-hover:text-primary group-[&.swiper-button-disabled]:text-black/35 duration-500 relative z-20 flex justify-center items-center"
+                                                size={20}
+                                            />
                                         </div>
                                     </div>
                                 </div>

@@ -1,6 +1,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import Icon from './ui/Icon';
 
 interface HeaderProps {
     headerBgColor?: string;
@@ -75,7 +76,11 @@ export default function Header({ headerBgColor = 'transparent' }: HeaderProps) {
                                             <button className="menu-item-link flex items-center justify-start text-base font-light duration-450 relative py-20 md:py-15 px-10 md:px-30 gap-20 sm:gap-10">
                                                 <div className="title-field flex w-max relative">
                                                     <span className="text text-white/50 text-[32px] 2xl:text-28 xl:text-24 lg:text-22 md:text-20 sm:text-18 duration-450 group-[&.active]/menu-item:text-primary group-hover/menu-item:text-primary">Corporate</span>
-                                                    <div className="icon icon-mini-down text-white group-hover/follow:text-white text-[14px] h-[14px] md:block leading-none duration-350 z-1 block absolute -right-25 top-[50%] translate-y-[-50%]"></div>
+                                                    <Icon 
+                                                        name="icon-mini-down" 
+                                                        className="text-white group-hover/follow:text-white text-[14px] h-[14px] md:block leading-none duration-350 z-1 block absolute -right-25 top-[50%] translate-y-[-50%]" 
+                                                        size={14}
+                                                    />
                                                 </div>
                                             </button>
                                             <div className="editor-field overflow-hidden isolate h-0 relative">
@@ -113,7 +118,11 @@ export default function Header({ headerBgColor = 'transparent' }: HeaderProps) {
                                             <Link href="/products" className="menu-item-link flex items-center justify-start text-base font-light duration-450 relative py-20 md:py-15 px-10 md:px-30 gap-20 sm:gap-10">
                                                 <div className="title-field flex w-max relative">
                                                     <span className="text text-white/50 text-[32px] 2xl:text-28 xl:text-24 lg:text-22 md:text-20 sm:text-18 duration-450 group-[&.active]/menu-item:text-primary group-hover/menu-item:text-primary">Products</span>
-                                                    <div className="icon icon-mini-down text-white group-hover/follow:text-white text-[14px] h-[14px] md:block leading-none duration-350 z-1 block absolute -right-25 top-[50%] translate-y-[-50%]"></div>
+                                                    <Icon 
+                                                        name="icon-mini-down" 
+                                                        className="text-white group-hover/follow:text-white text-[14px] h-[14px] md:block leading-none duration-350 z-1 block absolute -right-25 top-[50%] translate-y-[-50%]" 
+                                                        size={14}
+                                                    />
                                                 </div>
                                             </Link>
                                             <div className="split w-full h-[1px] relative bg-white/14 flex"></div>
@@ -145,10 +154,18 @@ export default function Header({ headerBgColor = 'transparent' }: HeaderProps) {
                                                     className="w-full peer h-50 border-0 border-solid border-b-[1px] border-transparent group-hover/menu-item:border-white/50 focus:border-white/50 leading-normal px-40 pl-40 py-[5px] placeholder:font-medium font-medium text-[#fffffff] placeholder:text-transparent md:placeholder:text-white/65 placeholder:duration-350 group-hover/menu-item:placeholder:text-white text-white text-[17px] xs:text-[14px] duration-350 hover:border-[#fffffff]/50 focus:!border-[#fffffff]/65 focus:ring-0 md:border-white/14" 
                                                 />
                                                 <button type="button" className="group cursor-pointer h-[40px] w-[40px] rounded-full absolute left-[-10px] xsm:right-20 top-[50%] translate-y-[-50%] border-0 pointer-events-auto peer-placeholder-shown:pointer-events-none">
-                                                    <div className="icon icon-search text-[22px] h-[25px] block leading-none duration-350 text-[#ffffff] group-hover:text-[#fffffff]"></div>
+                                                    <Icon 
+                                                        name="icon-search" 
+                                                        className="text-[22px] h-[25px] block leading-none duration-350 text-[#ffffff] group-hover:text-[#fffffff]" 
+                                                        size={22}
+                                                    />
                                                 </button>
                                                 <button type="submit" className="group cursor-pointer h-[40px] w-[40px] rounded-full absolute right-[0px] top-[50%] translate-y-[-50%] border-0 opacity-100 peer-placeholder-shown:opacity-0 duration-350">
-                                                    <div className="icon icon-arrow-right text-[16px] h-[16px] block leading-none duration-350 text-[#ffffff] group-hover:text-primary-600"></div>
+                                                    <Icon 
+                                                        name="icon-arrow-right" 
+                                                        className="text-[16px] h-[16px] block leading-none duration-350 text-[#ffffff] group-hover:text-primary-600" 
+                                                        size={16}
+                                                    />
                                                 </button>
                                             </form>
                                         </li>
@@ -158,22 +175,38 @@ export default function Header({ headerBgColor = 'transparent' }: HeaderProps) {
                                             <ul className="flex gap-[15px] lg:gap-[10px]">
                                                 <li>
                                                     <Link href="#" className="flex group/link relative p-11 rounded-full duration-450 border-[2px] border-solid border-white/14 hover:border-primary">
-                                                        <i className="icon icon-facebook text-[16px] h-[16px] text-white block leading-none duration-350 z-2"></i>
+                                                        <Icon 
+                                                            name="icon-facebook" 
+                                                            className="text-[16px] h-[16px] text-white block leading-none duration-350 z-2" 
+                                                            size={16}
+                                                        />
                                                     </Link>
                                                 </li>
                                                 <li>
                                                     <Link href="#" className="flex group/link relative p-11 rounded-full duration-450 border-[2px] border-solid border-white/14 hover:border-primary">
-                                                        <i className="icon icon-linkedin text-[16px] h-[16px] text-white block leading-none duration-350 z-2"></i>
+                                                        <Icon 
+                                                            name="icon-linkedin" 
+                                                            className="text-[16px] h-[16px] text-white block leading-none duration-350 z-2" 
+                                                            size={16}
+                                                        />
                                                     </Link>
                                                 </li>
                                                 <li>
                                                     <Link href="#" className="flex group/link relative p-11 rounded-full duration-450 border-[2px] border-solid border-white/14 hover:border-primary">
-                                                        <i className="icon icon-youtube text-[16px] h-[16px] text-white block leading-none duration-350 z-2"></i>
+                                                        <Icon 
+                                                            name="icon-youtube" 
+                                                            className="text-[16px] h-[16px] text-white block leading-none duration-350 z-2" 
+                                                            size={16}
+                                                        />
                                                     </Link>
                                                 </li>
                                                 <li>
                                                     <Link href="#" className="flex group/link relative p-11 rounded-full duration-450 border-[2px] border-solid border-white/14 hover:border-primary">
-                                                        <i className="icon icon-instagram text-[16px] h-[16px] text-white block leading-none duration-350 z-2"></i>
+                                                        <Icon 
+                                                            name="icon-instagram" 
+                                                            className="text-[16px] h-[16px] text-white block leading-none duration-350 z-2" 
+                                                            size={16}
+                                                        />
                                                     </Link>
                                                 </li>
                                             </ul>

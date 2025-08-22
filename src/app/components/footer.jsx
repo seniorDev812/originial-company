@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Icon from './ui/Icon';
 
 export default function Footer() {
     return (
@@ -15,7 +16,11 @@ export default function Footer() {
 			<div className="foot-contact flex items-center gap-80 2xl:gap-40 lg:gap-20 border-0 border-b border-solid border-white/15 relative after:absolute after:-right-44 2xl:after:-right-35 after:bottom-0 after:content after:w-1 after:h-full after:bg-white/15 after:-skew-x-[30deg] padding-left-content md:px-30 md:py-30 md:justify-center md:order-2 sm:flex-wrap sm:justify-center" style={{paddingLeft: "32px"}}>
                 <div className="item information-item group/item relative ">
                     <a href="tel:+902124387550" className="content flex justify-center gap-20 sm:gap-[15px] group/link">
-                        <i className="icon icon-support text-[34px] h-[34px] lg:text-[24px] lg:h-[24px] sm:text-20 sm:h-20 group-hover/link:!text-primary text-[#86888A] leading-none flex items-center duration-450"></i>
+                        <Icon 
+                            name="icon-support" 
+                            className="text-[34px] h-[34px] lg:text-[24px] lg:h-[24px] sm:text-20 sm:h-20 group-hover/link:!text-primary text-[#86888A] leading-none flex items-center duration-450" 
+                            size={34}
+                        />
                         <div className="text-field relative w-full my-auto">
                             <p className="text text-20 2xl:text-18 sm:text-16 text-[#86888A] leading-tight duration-350 group-hover/link:text-white font-normal group-hover/link:translate-x-[3px] sm:[&_br]:hidden break-all">+90 212 438 75 50</p>
                         </div>
@@ -24,7 +29,11 @@ export default function Footer() {
 
                 <div className="item information-item group/item relative ">
                     <a href="mailto:info@seengroup.com" className="content flex justify-center gap-20 sm:gap-[15px] group/link">
-                        <i className="icon icon-mail text-[34px] h-[34px] lg:text-[24px] lg:h-[24px] sm:text-20 sm:h-20 group-hover/link:!text-primary text-[#86888A] leading-none flex items-center duration-450"></i>
+                        <Icon 
+                            name="icon-mail" 
+                            className="text-[34px] h-[34px] lg:text-[24px] lg:h-[24px] sm:text-20 sm:h-20 group-hover/link:!text-primary text-[#86888A] leading-none flex items-center duration-450" 
+                            size={34}
+                        />
                         <div className="text-field relative w-full my-auto">
                             <p className="text text-20 2xl:text-18 sm:text-16 text-[#86888A] leading-tight duration-350 group-hover/link:text-white font-normal group-hover/link:translate-x-[3px] sm:[&_br]:hidden break-all">info@seengroup.com</p>
                         </div>
@@ -44,22 +53,38 @@ export default function Footer() {
                     <ul className="flex gap-[20px] lg:gap-[10px]">
                                                     <li>
                                 <a href="https://www.facebook.com/asirgroup/" target="_blank" className="flex group/link relative before:absolute before:w-[0] before:h-[0] before:left-1/2 before:rounded-full before:duration-450 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2 hover:before:w-[45px] hover:before:h-[45px] before:border-[2px] before:border-solid before:border-transparent hover:before:border-primary p-10 rounded-full duration-450">
-                                    <i className="icon icon-facebook text-[16px] h-[16px] text-white/60 block leading-none duration-350  group-hover/link:text-white "></i>
+                                    <Icon 
+                                        name="icon-facebook" 
+                                        className="text-[16px] h-[16px] text-white/60 block leading-none duration-350  group-hover/link:text-white" 
+                                        size={16}
+                                    />
                                 </a>
                             </li>
                                                     <li>
                                 <a href="https://www.linkedin.com/company/as%C4%B1rgroup/about/" target="_blank" className="flex group/link relative before:absolute before:w-[0] before:h-[0] before:left-1/2 before:rounded-full before:duration-450 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2 hover:before:w-[45px] hover:before:h-[45px] before:border-[2px] before:border-solid before:border-transparent hover:before:border-primary p-10 rounded-full duration-450">
-                                    <i className="icon icon-linkedin text-[16px] h-[16px] text-white/60 block leading-none duration-350  group-hover/link:text-white "></i>
+                                    <Icon 
+                                        name="icon-linkedin" 
+                                        className="text-[16px] h-[16px] text-white/60 block leading-none duration-350  group-hover/link:text-white" 
+                                        size={16}
+                                    />
                                 </a>
                             </li>
                                                     <li>
                                 <a href="https://www.youtube.com/@asrgroup9435" target="_blank" className="flex group/link relative before:absolute before:w-[0] before:h-[0] before:left-1/2 before:rounded-full before:duration-450 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2 hover:before:w-[45px] hover:before:h-[45px] before:border-[2px] before:border-solid before:border-transparent hover:before:border-primary p-10 rounded-full duration-450">
-                                    <i className="icon icon-youtube text-[16px] h-[16px] text-white/60 block leading-none duration-350  group-hover/link:text-white "></i>
+                                    <Icon 
+                                        name="icon-youtube" 
+                                        className="text-[16px] h-[16px] text-white/60 block leading-none duration-350  group-hover/link:text-white" 
+                                        size={16}
+                                    />
                                 </a>
                             </li>
                                                     <li>
                                 <a href="https://www.instagram.com/asirgroupglobal/" target="_blank" className="flex group/link relative before:absolute before:w-[0] before:h-[0] before:left-1/2 before:rounded-full before:duration-450 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2 hover:before:w-[45px] hover:before:h-[45px] before:border-[2px] before:border-solid before:border-transparent hover:before:border-primary p-10 rounded-full duration-450">
-                                    <i className="icon icon-instagram text-[16px] h-[16px] text-white/60 block leading-none duration-350  group-hover/link:text-white "></i>
+                                    <Icon 
+                                        name="icon-instagram" 
+                                        className="text-[16px] h-[16px] text-white/60 block leading-none duration-350  group-hover/link:text-white" 
+                                        size={16}
+                                    />
                                 </a>
                             </li>
                                             </ul>
@@ -119,7 +144,11 @@ export default function Footer() {
                                                 <a href="https://maps.app.goo.gl/qeAswubFCJjeXD8z9" target="_blank" className="button group min-w-[150px] max-w-[300px] justify-center items-center w-auto flex py-9 px-15 bg-white/10 relative space-x-[5px] transition-all !duration-450 overflow-hidden isolate rounded-full before:content before:absolute before:left-[-100%] before:top-0 before:w-full before:h-full before:bg-primary hover:border-primary hover:before:left-0 before:duration-450 sm:before:w-0 menu-link xs:justify-center rtl:gap-2">
                                                     <div className="text-[12px] flex items-center relative z-2 duration-450 ease-samedown group-hover:translate-x-1 ">
                                                         <div className="icon relative flex justify-center items-center z-2">
-                                                            <i className="icon-location h-[14px] text-[14px] md:text-12 md:h-12 text-primary duration-450 relative z-20 flex sm:!text-primary justify-center items-center group-hover:text-white"></i>
+                                                            <Icon 
+                                                                name="icon-location" 
+                                                                className="h-[14px] text-[14px] md:text-12 md:h-12 text-primary duration-450 relative z-20 flex sm:!text-primary justify-center items-center group-hover:text-white" 
+                                                                size={14}
+                                                            />
                                                         </div>
                                                     </div>
                                                     <div className="text-[14px] xs:text-[12px] font-medium flex items-center text-white group-hover:text-white relative sm:!text-white z-2 duration-450 w-max">Get Directions</div>
@@ -142,7 +171,11 @@ export default function Footer() {
                                                 <a href="https://maps.app.goo.gl/RvbgGPfKZJJXXJe8A" target="_blank" className="button group min-w-[150px] max-w-[300px] justify-center items-center w-auto flex py-9 px-15 bg-white/10 relative space-x-[5px] transition-all !duration-450 overflow-hidden isolate rounded-full before:content before:absolute before:left-[-100%] before:top-0 before:w-full before:h-full before:bg-primary hover:border-primary hover:before:left-0 before:duration-450 sm:before:w-0 menu-link xs:justify-center rtl:gap-2">
                                                     <div className="text-[12px] flex items-center relative z-2 duration-450 ease-samedown group-hover:translate-x-1 ">
                                                         <div className="icon relative flex justify-center items-center z-2">
-                                                            <i className="icon-location h-[14px] text-[14px] md:text-12 md:h-12 text-primary duration-450 relative z-20 flex sm:!text-primary justify-center items-center group-hover:text-white"></i>
+                                                            <Icon 
+                                                                name="icon-location" 
+                                                                className="h-[14px] text-[14px] md:text-12 md:h-12 text-primary duration-450 relative z-20 flex sm:!text-primary justify-center items-center group-hover:text-white" 
+                                                                size={14}
+                                                            />
                                                         </div>
                                                     </div>
                                                     <div className="text-[14px] xs:text-[12px] font-medium flex items-center text-white group-hover:text-white relative sm:!text-white z-2 duration-450 w-max">Get Directions</div>
@@ -165,7 +198,11 @@ export default function Footer() {
                                                 <a href="https://maps.app.goo.gl/7byY5ZZWnL56EYMo9" target="_blank" className="button group min-w-[150px] max-w-[300px] justify-center items-center w-auto flex py-9 px-15 bg-white/10 relative space-x-[5px] transition-all !duration-450 overflow-hidden isolate rounded-full before:content before:absolute before:left-[-100%] before:top-0 before:w-full before:h-full before:bg-primary hover:border-primary hover:before:left-0 before:duration-450 sm:before:w-0 menu-link xs:justify-center rtl:gap-2">
                                                     <div className="text-[12px] flex items-center relative z-2 duration-450 ease-samedown group-hover:translate-x-1 ">
                                                         <div className="icon relative flex justify-center items-center z-2">
-                                                            <i className="icon-location h-[14px] text-[14px] md:text-12 md:h-12 text-primary duration-450 relative z-20 flex sm:!text-primary justify-center items-center group-hover:text-white"></i>
+                                                            <Icon 
+                                                                name="icon-location" 
+                                                                className="h-[14px] text-[14px] md:text-12 md:h-12 text-primary duration-450 relative z-20 flex sm:!text-primary justify-center items-center group-hover:text-white" 
+                                                                size={14}
+                                                            />
                                                         </div>
                                                     </div>
                                                     <div className="text-[14px] xs:text-[12px] font-medium flex items-center text-white group-hover:text-white relative sm:!text-white z-2 duration-450 w-max">Get Directions</div>

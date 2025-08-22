@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Icon from '../ui/Icon';
 
 // Map dot data
 const mapDots = [
@@ -86,9 +87,11 @@ const MapDot = ({ country, left, top }: { country: string; left: string; top: st
         </div>
         <div className="content w-[30px] h-[30px] lg:w-[25px] lg:h-[25px] md:w-[20px] md:h-[20px] relative flex items-center justify-center duration-450 group-hover/dot scale-105:">
             <div className="dot-item rounded-full absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 duration-350">
-                <i 
-                    style={{fontSize: "12px", height: "12px"}} 
-                    className="icon-map h-[18px] text-[18px] md:text-12 md:h-12 text-primary duration-450 relative z-20 flex sm:!text-primary justify-center items-center group-hover:text-white group-hover:rotate-45 drop-shadow-[0px_4px_10px_rgba(246,148,30,0.50)]"
+                <Icon 
+                name="icon-location"
+                style={{color: "rgb(246, 149, 30)"}} 
+                className="ho-[14px] text-[14px] md:text-12 md:h-12 text-primary duration-450 relative z-20 flex sm:!text-primary justify-center items-center group-hover:text-white" 
+                size={14}
                 />
             </div>
         </div>

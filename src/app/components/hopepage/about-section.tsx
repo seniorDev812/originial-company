@@ -1,3 +1,5 @@
+import Icon from '../ui/Icon';
+
 export default function AboutSection() {
     return (
       <section className="about-field relative overflow-hidden isolate pb-[120px] 2xl:pb-[80px] xl:pb-[60px] lg:pb-[45px] md:pb-[30px] scrollable-field">
@@ -41,7 +43,11 @@ export default function AboutSection() {
                     </div>
                     <div className="text-[12px] flex items-center relative z-2 duration-450 ease-samedown group-hover:translate-x-1">
                       <div className="icon relative flex justify-center items-center z-2">
-                        <i className="icon-arrow-skew h-[14px] text-[14px] md:text-12 md:h-12 text-primary duration-450 relative z-20 flex sm:!text-primary justify-center items-center group-hover:text-white group-hover:rotate-45"></i>
+                        <Icon 
+                            name="icon-arrow-skew" 
+                            className="h-[14px] text-[14px] md:text-12 md:h-12 text-primary duration-450 relative z-20 flex sm:!text-primary justify-center items-center group-hover:text-white group-hover:rotate-45" 
+                            size={14}
+                        />
                       </div>
                     </div>
                   </a>
