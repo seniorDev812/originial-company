@@ -17,7 +17,12 @@ export default function HopePage() {
                     <div className="block">
                         <div id="smooth-wrapper" className="block">
                             <div id="smooth-content">
+                                <div
+                                    className="loader-wrap z-60 fixed top-0 left-0 bg-black pointer-events-none"
+                                    style={{ opacity: 0, display: "none", zIndex: -1 }}
+                                ></div>
 
+                                <div className="loader-wrap z-60 fixed top-0 left-0 bg-black pointer-events-none"></div>
                                 <main className="main-field home-animation">
                                     <BannerSection />
                                     <AboutSection />
@@ -31,9 +36,9 @@ export default function HopePage() {
 
                         <div className="cookie-box fixed top-auto bottom-[20px] right-[20px] left-[20px] mr-0 ml-auto w-fit max-w-[550px] md:max-w-full z-[200] duration-450 xs:w-full xs:left-0 xs:bottom-0 xs:right-0 bg-cookie p-[30px] rounded-[20px] xs:rounded-none translate-y-[150%] [&amp;.accepted]:opacity-0 [&amp;.accepted]:invisible [&amp;.accepted]:translate-y-[250%] sm:sm:max-h-[calc(100dvh-40px)] sm:scrollbar sm:scrollbar-w-[5px] sm:scrollbar-track-rounded-[5px] sm:scrollbar-thumb-rounded-[5px] sm:scrollbar-thumb-primary sm:scrollbar-track-primary/10 sm:overflow-x-hidden sm:overflow-y-auto accepted">
                             <div className="close close-cookie absolute right-[20px] top-[20px] cursor-pointer group/close">
-                                <Icon 
-                                    name="icon-cross" 
-                                    className="group-hover/close:text-primary group-hover/close:rotate-90 text-white text-[14px] h-[14px] block leading-none duration-350" 
+                                <Icon
+                                    name="icon-cross"
+                                    className="group-hover/close:text-primary group-hover/close:rotate-90 text-white text-[14px] h-[14px] block leading-none duration-350"
                                     size={14}
                                 />
                             </div>
