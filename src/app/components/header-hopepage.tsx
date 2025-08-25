@@ -4,6 +4,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Icon from './ui/Icon';
+import './header/style.css';
 import { useState, useEffect } from 'react';
 
 interface HeaderProps {

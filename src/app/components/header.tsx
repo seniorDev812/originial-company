@@ -1,13 +1,27 @@
-
+"use client";
 import Link from 'next/link';
 import Image from 'next/image';
 import Icon from './ui/Icon';
-
+import './header/style.css';
+import { useState } from 'react';
+    
 interface HeaderProps {
     headerBgColor?: string;
 }
 
 export default function Header({ headerBgColor = 'transparent' }: HeaderProps) {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+        // Prevent body scroll when menu is open
+        if (!isMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+    };
+
     return (
         <>
         <header className="group/header header-field h-[150px] group-[&amp;.active]/body:h-150 sm:group-[&amp;.active]/body:h-120 sm:h-[120px] z-[100] fixed w-full left-0 top-0 duration-450 will-change-[height, transform]  [&amp;.is-fixed_.header-bottom]:shadow-[0_0px_30px_rgb(0,0,0,0.12)] [&amp;.is-hidden.is-fixed]:!-translate-y-full [&amp;.no-scroll]:absolute [&amp;.bg-active]:bg-white [&amp;.bg-active_.menu-item-link_span]:text-[#414243] [&amp;.bg-active_.menu-item-link_.icon]:text-[#414243] [&amp;.bg-active_.logo-field_.logo-fill]:fill-[#575756] [&amp;.bg-active_.language-flag_.text]:text-[#414243] [&amp;.bg-active_.language-flag_.icon]:text-[#414243] [&amp;.bg-active_.order_.text]:text-[#414243]">
@@ -25,7 +39,10 @@ export default function Header({ headerBgColor = 'transparent' }: HeaderProps) {
                         <div className="menu menu-animate group/menu-cont h-full border-0 border-b border-solid border-white/15 relative after:absolute after:-right-43 sm:after:-right-35 after:bottom-0 after:content-[''] after:w-1 after:h-full after:bg-white/15 after:-skew-x-[30deg] padding-left-content delay-active  duration-600 md:pl-30 xsm:pl-20">
                             <ul className="flex justify-start items-center gap-50 lg:gap-30 lg:overflow-hidden lg:isolate h-full">
                                 <li className="group/menu-item lg:relative">
-                                    <div className="mobile-menu-field menu-btn group/mobile-menu h-full flex items-center cursor-pointer gap-20 pl-4 md:pl-0">
+                                    <div 
+                                        className={`mobile-menu-field menu-btn group/mobile-menu h-full flex items-center cursor-pointer gap-20 pl-4 md:pl-0 ${isMenuOpen ? 'active' : ''}`}
+                                        onClick={toggleMenu}
+                                    >
                                         <div className="space-y-10 min-h-[40px] xsm:min-h-[33px] flex flex-col items-start justify-center">
                                             <div className="line w-[40px] xsm:w-30 h-[1px] bg-white group-hover/mobile-menu:bg-primary group-hover/mobile-menu:w-[40px] duration-350 flex justify-end group-[.active]/mobile-menu:w-[33px] group-[.page-subs-header]/header:bg-[#000F24] group-[.active]/mobile-menu:opacity-0 group-[&.transparent]/header:bg-[#000F24] group-[&.transparent.is-fixed]/header:bg-[#000F24]"></div>
                                             <div className="line w-[28px] h-[1px] xsm:w-18 bg-white group-hover/mobile-menu:bg-primary group-hover/mobile-menu:w-[40px] duration-350 flex justify-end group-[.active]/mobile-menu:w-[33px] group-[.page-subs-header]/header:bg-[#000F24] group-[.active]/mobile-menu:rotate-45 group-[.active]/mobile-menu:m-[-1px] group-[&.transparent]/header:bg-[#000F24] group-[&.transparent.is-fixed]/header:bg-[#000F24]"></div>
@@ -68,8 +85,28 @@ export default function Header({ headerBgColor = 'transparent' }: HeaderProps) {
                 </div>
                 <div className="all-info-boxes absolute top-0 right-0 w-full h-full z-[100] pointer-events-none">
                     <div className="all-info-wrapper relative w-full h-full">
-                        <div className="info-box max-w-full w-full h-screen fixed top-0 left-0 scale-90 opacity-0 invisible [&.is-active]:scale-100 [&.is-active]:opacity-100 [&.is-active]:translate-x-0 [&.is-active]:visible [&.is-active]:pointer-events-auto ease-manidar duration-450 z-[20] py-[50px] 2xl:pb-30 pt-150 2xl:pt-120 bg-[#383838]/60 backdrop-blur-[40px]">
-                            <div className="content overflow-hidden justify-between md:justify-start flex flex-col gap-[30px] md:gap-0 max-w-[1440px] px-30 mx-auto h-full scrollbar scrollbar-w-[5px] scrollbar-track-rounded-[5px] scrollbar-thumb-rounded-[5px] scrollbar-thumb-main-500 scrollbar-track-main-500/10 overflow-x-hidden overflow-y-auto mobile-menu-list">
+                        <div 
+                            className="info-box max-w-full w-full h-screen fixed top-0 left-0 ease-manidar duration-450 z-[20] py-[50px] 2xl:pb-30 pt-150 2xl:pt-120 bg-[#383838]/60 backdrop-blur-[40px]"
+                            style={{
+                                transform: isMenuOpen ? 'scale(1)' : 'scale(0.9)',
+                                opacity: isMenuOpen ? 1 : 0,
+                                visibility: isMenuOpen ? 'visible' : 'hidden',
+                                pointerEvents: isMenuOpen ? 'auto' : 'none'
+                            }}
+                            onClick={toggleMenu}
+                        >
+                            <div className="content overflow-hidden justify-between md:justify-start flex flex-col gap-[30px] md:gap-0 max-w-[1440px] px-30 mx-auto h-full scrollbar scrollbar-w-[5px] scrollbar-track-rounded-[5px] scrollbar-thumb-rounded-[5px] scrollbar-thumb-main-500 scrollbar-track-main-500/10 overflow-x-hidden overflow-y-auto mobile-menu-list" onClick={(e) => e.stopPropagation()}>
+                                {/* Close button */}
+                                <button 
+                                    onClick={toggleMenu}
+                                    className="absolute top-30 right-30 text-white hover:text-primary duration-350 z-50"
+                                >
+                                    <Icon 
+                                        name="icon-close" 
+                                        className="text-[24px] h-[24px]" 
+                                        size={24}
+                                    />
+                                </button>
                                 <div className="bottom-wrapper flex h-full justify-between md:order-2 flex-col pt-70 md:pt-60 sm:pt-30 xsm:pt-20">
                                     <ul className="menu-list flex flex-col gap-0 fax-list relative mb-50 xsm:mb-20 wrapper-append">
 
