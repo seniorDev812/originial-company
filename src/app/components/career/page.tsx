@@ -136,7 +136,7 @@ export default function Career() {
                     <div className="section-header">
                         <h2>Submit Your Resume</h2>
                         <p>
-                            Don't see a position that fits? Send us your resume and we'll keep you
+                            Don&apos;t see a position that fits? Send us your resume and we&apos;ll keep you
                             in mind for future opportunities
                         </p>
                     </div>

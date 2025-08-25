@@ -89,8 +89,8 @@ export async function POST(request) {
             }
         });
 
-    } catch (error) {
-        console.error('Contact form submission error:', error);
+    } catch {
+        console.error('Contact form submission error');
         
         return NextResponse.json(
             { 

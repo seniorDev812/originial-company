@@ -1,6 +1,8 @@
 
 "use client"
 import React, { useState, useEffect, useCallback, useMemo } from 'react';    
+import Image from 'next/image';
+import Icon from '../ui/Icon';
 import './style.css'
 
 // Types for better TypeScript support
@@ -40,7 +42,7 @@ const ProductFilter = () => {
   // Product data state
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error] = useState<string | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   // Mock product data - replace with API call
@@ -112,7 +114,7 @@ const ProductFilter = () => {
   ];
 
   // Category mappings
-  const categoryMappings = {
+  const categoryMappings = useMemo(() => ({
     auxiliary: {
       '139': 'Cooling Fans and Blower Assemblies',
       '140': 'Blower Assemblies',
@@ -144,7 +146,7 @@ const ProductFilter = () => {
       '158': 'Shafts',
       '164': 'Starters'
     }
-  };
+  }), []);
 
   // Load products on component mount
   useEffect(() => {
@@ -156,7 +158,7 @@ const ProductFilter = () => {
       setProducts(mockProducts);
       setLoading(false);
     }, 500);
-  }, []); // Empty dependency array - only run once on mount
+  }, [mockProducts]); // Include mockProducts in dependency array
 
   // URL state management - sync filters with URL
   useEffect(() => {
@@ -903,7 +905,13 @@ const ProductFilter = () => {
                   {/* Product Description Start */}
                   <div className="sei-peodct-discription-content">
                     <div className="sei-product-img">
-                      <img src="imgs/list.jpg" alt="Cooling Fans and Blower Assemblies" />
+                      <Image 
+                        src="/imgs/list.jpg" 
+                        alt="Cooling Fans and Blower Assemblies"
+                        width={300}
+                        height={200}
+                        className="w-full h-auto"
+                      />
                     </div>
                     <div className="sei-product-content-d">
                       <h1 className="sei-product-title">Cooling Fans and Blower Assemblies</h1>
@@ -958,7 +966,7 @@ const ProductFilter = () => {
                       ))
                     ) : (
                       <div className="sei-no-results">
-                        <i className="fa fa-search"></i>
+                        <Icon name="icon-search" size={16} />
                         <p>No products found matching your criteria.</p>
                         <button 
                           onClick={() => {
@@ -1004,7 +1012,15 @@ const ProductFilter = () => {
             <div className="sei-two-cols">
               <div className="sei-left-side">
                 <div className="sei-advisor-contact">
-                  <span><img src="imgs/Auxilary-1-300x300.jpg" alt="" /></span>
+                  <span>
+                    <Image 
+                      src="/imgs/Auxilary-1-300x300.jpg" 
+                      alt="Product image"
+                      width={300}
+                      height={300}
+                      className="w-full h-auto"
+                    />
+                  </span>
                   <p className="sei-title">Contact a Sales<br />Advisor Today</p>
                 </div>
               </div>

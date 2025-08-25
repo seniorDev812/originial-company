@@ -46,7 +46,7 @@ interface IconProps {
   style?: React.CSSProperties;
 }
 
-const iconMap: Record<string, React.ComponentType<any>> = {
+const iconMap: Record<string, React.ComponentType<{ className?: string; size?: number; strokeWidth?: number; style?: React.CSSProperties }>> = {
   'icon-arrow-left': ArrowLeft,
   'icon-arrow-right': ArrowRight,
   'icon-arrow-skew': ArrowUpRight,

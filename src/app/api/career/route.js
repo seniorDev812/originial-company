@@ -96,7 +96,7 @@ export async function POST(request) {
 }
 
 // Optional: GET endpoint to retrieve job listings
-export async function GET(request) {
+export async function GET() {
     try {
         // In a real application, you would fetch from a database
         const jobs = [

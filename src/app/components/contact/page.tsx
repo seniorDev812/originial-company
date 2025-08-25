@@ -21,7 +21,7 @@ export default function Contact() {
                         
                         <div id="success-message" className="seen-contact-success-message">
                             <Icon name="icon-check" className="mr-2" size={16} />
-                            Thank you! Your request has been submitted successfully. We'll contact
+                            Thank you! Your request has been submitted successfully. We&apos;ll contact
                             you soon.
                         </div>
 
