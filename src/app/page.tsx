@@ -1,4 +1,3 @@
-
 import HopePage from "./components/hopepage";
 
 export default function Home() {
@@ -6,3 +5,4 @@ export default function Home() {
       <HopePage />
   );
 }
+ 

@@ -1,32 +1,21 @@
-import React from 'react';
-import Header from "./header";
-import Footer from "./footer";
-import BannerSection from './hopepage/banner-section';
-import AboutSection from './hopepage/about-section';
-import MapSection from './hopepage/map-section';
-import BrandsSection from './hopepage/brans-section';
-import Icon from './ui/Icon';
+import Footer from "../components/footer";
+import Header from "../components/header";
+import Icon from "../components/ui/Icon";
+import Script from 'next/script';
 import '../../../public/css/style.css';
 import '../../../public/css/tailwind.css';
+import Career from "../components/career/page";
 
-export default function HopePage() {
+export default function CareerPage() {
     return (
-       <>
-         <Header />
+        <>
+        
+            <Header />
             <div className="block">
                 <div id="smooth-wrapper" className="block">
                     <div id="smooth-content">
-                        {/* <div
-                            className="loader-wrap z-60 fixed top-0 left-0 bg-black pointer-events-none"
-                            style={{ opacity: 0, display: "none", zIndex: -1 }}
-                        ></div> */}
-
-                        {/* <div className="loader-wrap z-60 fixed top-0 left-0 bg-black pointer-events-none"></div> */}
-                        <main className="main-field home-animation">
-                            <BannerSection />
-                            <AboutSection />
-                            <MapSection />
-                            <BrandsSection />
+                      <main className="main-field home-animation">
+                        <Career />
                         </main>
                         <Footer />
                     </div>
@@ -60,8 +49,10 @@ export default function HopePage() {
                     </div>
                 </div>
             </div>
-       
-       </>
-       
+            <Script
+                src="/components/career/career.js"
+                strategy="afterInteractive"
+            />
+        </>
     )
 }

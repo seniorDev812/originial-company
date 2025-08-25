@@ -20,7 +20,23 @@ import {
   Globe,
   Printer,
   Link as LinkIcon,
-  Youtube
+  Youtube,
+  User,
+  CheckCircle,
+  Package,
+  Trash2,
+  Plus,
+  Loader2,
+  Send,
+  ChevronLeft,
+  ChevronRight,
+  CloudUpload,
+  Building,
+  Info,
+  ListTodo,
+  Star,
+  Calendar,
+  Briefcase
 } from 'lucide-react';
 
 interface IconProps {
@@ -53,6 +69,24 @@ const iconMap: Record<string, React.ComponentType<any>> = {
   'icon-printer': Printer,
   'icon-link': LinkIcon,
   'icon-youtube': Youtube,
+  // Contact page icons
+  'icon-user': User,
+  'icon-check': CheckCircle,
+  'icon-package': Package,
+  'icon-trash': Trash2,
+  'icon-plus': Plus,
+  'icon-spinner': Loader2,
+  'icon-send': Send,
+  // Career page icons
+  'icon-chevron-left': ChevronLeft,
+  'icon-chevron-right': ChevronRight,
+  'icon-cloud-upload': CloudUpload,
+  'icon-building': Building,
+  'icon-info': Info,
+  'icon-list-check': ListTodo,
+  'icon-star': Star,
+  'icon-calendar': Calendar,
+  'icon-briefcase': Briefcase,
   // Social media variants
   'icon-facebook-2': Facebook,
   'icon-linkedin-2': Linkedin,

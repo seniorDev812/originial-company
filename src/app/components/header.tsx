@@ -22,7 +22,7 @@ export default function Header({ headerBgColor = 'transparent' }: HeaderProps) {
                 <div className="gradient-blur absolute left-0 top-0 backdrop-blur-[20px] opacity-0 w-full h-full duration-350 group-[&.active]/body:opacity-0"></div>
                 <div className="container max-w-full px-0 h-full relative z-[101]">
                     <div className="wrapper grid grid-cols-[minmax(0,_5fr)_minmax(0,_250px)_minmax(0,_5fr)] md:grid-cols-[minmax(0,_5fr)_minmax(0,_150px)_minmax(0,_5fr)] h-full justify-between items-center duration-450 gap-[40px] xsm:gap-20 xs:gap-15">
-                        <div className="menu menu-animate group/menu-cont h-full border-0 border-b border-solid border-white/15 relative after:absolute after:-right-43 sm:after:-right-35 after:bottom-0 after:content-[''] after:w-1 after:h-full after:bg-white/15 after:-skew-x-[30deg] padding-left-content delay-active translate-y-[-200%] duration-600 md:pl-30 xsm:pl-20">
+                        <div className="menu menu-animate group/menu-cont h-full border-0 border-b border-solid border-white/15 relative after:absolute after:-right-43 sm:after:-right-35 after:bottom-0 after:content-[''] after:w-1 after:h-full after:bg-white/15 after:-skew-x-[30deg] padding-left-content delay-active  duration-600 md:pl-30 xsm:pl-20">
                             <ul className="flex justify-start items-center gap-50 lg:gap-30 lg:overflow-hidden lg:isolate h-full">
                                 <li className="group/menu-item lg:relative">
                                     <div className="mobile-menu-field menu-btn group/mobile-menu h-full flex items-center cursor-pointer gap-20 pl-4 md:pl-0">
@@ -50,7 +50,7 @@ export default function Header({ headerBgColor = 'transparent' }: HeaderProps) {
                                 </div>
                             </Link>
                         </div>
-                        <div className="other-menu items-center justify-end flex gap-[20px] md:gap-[10px] h-full border-0 border-b border-solid border-white/15 relative after:absolute after:-left-43 sm:after:-left-35 after:bottom-0 after:content-[''] after:w-1 after:h-full after:bg-white/15 after:skew-x-[30deg] padding-right-content delay-active translate-y-[-200%] duration-600 md:pr-30 xsm:pr-20">
+                        <div className="other-menu items-center justify-end flex gap-[20px] md:gap-[10px] h-full border-0 border-b border-solid border-white/15 relative after:absolute after:-left-43 sm:after:-left-35 after:bottom-0 after:content-[''] after:w-1 after:h-full after:bg-white/15 after:skew-x-[30deg] padding-right-content delay-active  duration-600 md:pr-30 xsm:pr-20">
                             <div className="relative language md:[position:unset;] flex items-center gap-50 md:gap-30 sm:gap-15 xsm:gap-10 offer menu-li">
                                 <Link href="#" className="language-flag group/lang relative h-full flex items-center duration-350 border-0 border-solid border-b-2 border-transparent hover:border-white [&.active]:border-white active">
                                     <div className="current cursor-pointer px-3 xsm:px-0 flex items-center justify-center gap-[7.5px] duration-350 text-18 md:text-16 font-normal xsm:text-14 text-[#ffffff]">
@@ -72,17 +72,24 @@ export default function Header({ headerBgColor = 'transparent' }: HeaderProps) {
                             <div className="content overflow-hidden justify-between md:justify-start flex flex-col gap-[30px] md:gap-0 max-w-[1440px] px-30 mx-auto h-full scrollbar scrollbar-w-[5px] scrollbar-track-rounded-[5px] scrollbar-thumb-rounded-[5px] scrollbar-thumb-main-500 scrollbar-track-main-500/10 overflow-x-hidden overflow-y-auto mobile-menu-list">
                                 <div className="bottom-wrapper flex h-full justify-between md:order-2 flex-col pt-70 md:pt-60 sm:pt-30 xsm:pt-20">
                                     <ul className="menu-list flex flex-col gap-0 fax-list relative mb-50 xsm:mb-20 wrapper-append">
-                                        <li className="group/menu-item drop-fax lg:relative lg:w-full duration-450">
-                                            <button className="menu-item-link flex items-center justify-start text-base font-light duration-450 relative py-20 md:py-15 px-10 md:px-30 gap-20 sm:gap-10">
-                                                <div className="title-field flex w-max relative">
-                                                    <span className="text text-white/50 text-[32px] 2xl:text-28 xl:text-24 lg:text-22 md:text-20 sm:text-18 duration-450 group-[&.active]/menu-item:text-primary group-hover/menu-item:text-primary">Corporate</span>
-                                                    <Icon 
-                                                        name="icon-mini-down" 
-                                                        className="text-white group-hover/follow:text-white text-[14px] h-[14px] md:block leading-none duration-350 z-1 block absolute -right-25 top-[50%] translate-y-[-50%]" 
-                                                        size={14}
-                                                    />
-                                                </div>
-                                            </button>
+
+                                                                <li className="group/menu-item lg:relative lg:w-full duration-450">
+                            <Link href="/" className="menu-item-link flex items-center justify-start text-base font-light duration-450 relative py-20 md:py-15 px-10 md:px-30">
+                                <span className="text text-white/50 text-[32px] 2xl:text-28 xl:text-24 lg:text-22 md:text-20 sm:text-18 duration-450 group-hover/menu-item:text-primary">Home</span>
+                            </Link>
+                            <div className="split w-full h-[1px] relative bg-white/14 flex"></div>
+                        </li>
+                        <li className="group/menu-item drop-fax lg:relative lg:w-full duration-450">
+                            <button className="menu-item-link flex items-center justify-start text-base font-light duration-450 relative py-20 md:py-15 px-10 md:px-30 gap-20 sm:gap-10">
+                                <div className="title-field flex w-max relative">
+                                    <span className="text text-white/50 text-[32px] 2xl:text-28 xl:text-24 lg:text-22 md:text-20 sm:text-18 duration-450 group-[&.active]/menu-item:text-primary group-hover/menu-item:text-primary">Corporate</span>
+                                    <Icon 
+                                        name="icon-mini-down" 
+                                        className="text-white group-hover/follow:text-white text-[14px] h-[14px] md:block leading-none duration-350 z-1 block absolute -right-25 top-[50%] translate-y-[-50%]" 
+                                        size={14}
+                                    />
+                                </div>
+                            </button>
                                             <div className="editor-field overflow-hidden isolate h-0 relative">
                                                 <ul className="sub-list flex gap-20 flex-col md:gap-0 w-full pb-15">
                                                     <li className="sub-menu group/submenu">
@@ -115,7 +122,7 @@ export default function Header({ headerBgColor = 'transparent' }: HeaderProps) {
                                             <div className="split w-full h-[1px] relative bg-white/14 flex"></div>
                                         </li>
                                         <li className="group/menu-item drop-fax lg:relative lg:w-full duration-450">
-                                            <Link href="/products" className="menu-item-link flex items-center justify-start text-base font-light duration-450 relative py-20 md:py-15 px-10 md:px-30 gap-20 sm:gap-10">
+                                            <Link href="/product" className="menu-item-link flex items-center justify-start text-base font-light duration-450 relative py-20 md:py-15 px-10 md:px-30 gap-20 sm:gap-10">
                                                 <div className="title-field flex w-max relative">
                                                     <span className="text text-white/50 text-[32px] 2xl:text-28 xl:text-24 lg:text-22 md:text-20 sm:text-18 duration-450 group-[&.active]/menu-item:text-primary group-hover/menu-item:text-primary">Products</span>
                                                     <Icon 
