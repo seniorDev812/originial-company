@@ -98,6 +98,7 @@
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
@@ -332,6 +333,7 @@
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -493,6 +495,7 @@
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
+
     .seen-contact-form-input,
     .seen-contact-form-select,
     .seen-contact-form-textarea {
@@ -595,6 +598,18 @@
 }
 
 @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+.seen-contact-btn-text {
+    display: flex;
+    gap: 10px;
+    align-items: center
 }

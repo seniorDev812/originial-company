@@ -45,6 +45,52 @@
     box-sizing: border-box;
 }
 
+/* SVG Icon Base Styles */
+svg {
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+/* Ensure icons in buttons are properly aligned */
+button svg,
+.btn svg {
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+/* Icon alignment in flex containers */
+.flex svg,
+[class*="flex"] svg {
+    flex-shrink: 0;
+    align-self: center;
+}
+
+/* Icon alignment in inline elements */
+span svg,
+div svg {
+    vertical-align: middle;
+}
+
+/* Specific icon positioning fixes */
+.search-box svg {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.meta-badge svg {
+    margin-right: 0.25rem;
+}
+
+.section-title svg {
+    margin-right: 0.5rem;
+}
+
 /* Text Selection Styles */
 ::selection {
     background-color: #dd3333;
@@ -228,6 +274,7 @@ body {
     margin: 0 auto;
 }
 
+.search-box svg,
 .search-box i {
     position: absolute;
     left: 1rem;
@@ -235,6 +282,7 @@ body {
     transform: translateY(-50%);
     color: var(--text-light);
     z-index: 2;
+    pointer-events: none;
 }
 
 .search-box input {
@@ -458,10 +506,14 @@ body {
     transition: opacity 0.3s ease;
 }
 
-.no-results i {
+.no-results i,
+.no-results svg {
     font-size: 3rem;
     margin-bottom: 1rem;
     color: var(--text-light);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .no-results h3 {
@@ -659,9 +711,11 @@ body.modal-open {
     transform: translateY(-1px);
 }
 
-.meta-badge i {
+.meta-badge i,
+.meta-badge svg {
     color: var(--secondary-color);
     font-size: 0.875rem;
+    flex-shrink: 0;
 }
 
 .modal-close {
@@ -680,6 +734,12 @@ body.modal-open {
     transition: var(--transition);
     color: var(--text-secondary);
     font-size: 1.125rem;
+}
+
+.modal-close svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
 }
 
 .modal-close:hover {
@@ -744,9 +804,11 @@ body.modal-open {
     border-bottom: 2px solid var(--border-light);
 }
 
-.section-title i {
+.section-title i,
+.section-title svg {
     color: var(--secondary-color);
     font-size: 1.125rem;
+    flex-shrink: 0;
 }
 
 .section-content {
@@ -985,10 +1047,12 @@ body.modal-open {
     pointer-events: none;
 }
 
-.file-upload-content i {
+.file-upload-content i,
+.file-upload-content svg {
     font-size: 2rem;
     color: var(--primary-color);
     margin-bottom: 1rem;
+    flex-shrink: 0;
 }
 
 .file-upload-content span {
@@ -1638,10 +1702,14 @@ body.modal-open {
     color: var(--text-secondary);
 }
 
-.no-results i {
+.no-results i,
+.no-results svg {
     font-size: 3rem;
     color: var(--text-light);
     margin-bottom: 1rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .no-results h3 {
@@ -1662,8 +1730,10 @@ body.modal-open {
     color: #166534;
 }
 
-.success-message i {
+.success-message i,
+.success-message svg {
     font-size: 1.25rem;
+    flex-shrink: 0;
 }
 
 /* Field Error */
