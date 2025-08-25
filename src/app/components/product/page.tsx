@@ -150,15 +150,13 @@ const ProductFilter = () => {
 
   // Load products on component mount
   useEffect(() => {
-  
     setLoading(true);
     // Simulate API call
     setTimeout(() => {
-   
       setProducts(mockProducts);
       setLoading(false);
     }, 500);
-  }, [mockProducts]); // Include mockProducts in dependency array
+  }, []); // Remove mockProducts from dependency array to avoid infinite loop
 
   // URL state management - sync filters with URL
   useEffect(() => {
