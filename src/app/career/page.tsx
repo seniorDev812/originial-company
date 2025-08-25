@@ -9,7 +9,6 @@ import Career from "../components/career/page";
 export default function CareerPage() {
     return (
         <>
-        
             <Header />
             <div className="block">
                 <div id="smooth-wrapper" className="block">

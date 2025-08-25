@@ -26,7 +26,7 @@ export default function Contact() {
                         </div>
 
                         <form id="lead-form" noValidate>
-\                            <div className="seen-contact-form-section">
+                           <div className="seen-contact-form-section">
                                 <h2 className="seen-contact-section-title">
                                     <Icon name="icon-user" className="text-orange-500" size={16} />
                                     Contact Information

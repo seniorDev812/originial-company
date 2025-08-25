@@ -5485,7 +5485,20 @@ body {
     overflow: hidden;
     position: absolute;
     width: 100%;
-    z-index: 10
+    z-index: 10;
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none;
+}
+
+.loader-wrap.hidden {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.loader-wrap.removed {
+    display: none !important;
+    pointer-events: none;
 }
 
 .loader-wrap svg {

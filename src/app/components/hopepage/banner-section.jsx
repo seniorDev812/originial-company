@@ -206,8 +206,17 @@ export default function BannerSection() {
                 <div className="scroll-down absolute bottom-30 min-xs:left-[50%] min-xs:translate-x-[-50%] xs:left-0 home-panel-button group/down gap-10 flex flex-col justify-center items-center z-3 cursor-pointer px-15 2xl:px-10">
                   <div
                     className="group/scroll content scrollable flex flex-col gap-20 md:gap-5 items-center cursor-pointer pointer-events-auto w-25"
-                    data-smooth=".scrollable-field"
-                    data-smooth-offset="-75"
+                    onClick={() => {
+                      const target = document.querySelector('.scrollable-field');
+                      if (target) {
+                        const offset = -75; // matches data-smooth-offset="-75"
+                        const targetPosition = target.offsetTop + offset;
+                        window.scrollTo({
+                          top: targetPosition,
+                          behavior: 'smooth'
+                        });
+                      }
+                    }}
                   >
                     <div className="icon h-40 xl:scale-75">
                       <svg

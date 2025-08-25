@@ -1,5 +1,7 @@
-import React from 'react';
-import Header from "./header";
+"use client";
+
+import React, { useState, useEffect } from 'react';
+import Header from "./header-hopepage";
 import Footer from "./footer";
 import BannerSection from './hopepage/banner-section';
 import AboutSection from './hopepage/about-section';
@@ -10,18 +12,43 @@ import '../../../public/css/style.css';
 import '../../../public/css/tailwind.css';
 
 export default function HopePage() {
+    const [isLoading, setIsLoading] = useState(true);
+    const [loaderHidden, setLoaderHidden] = useState(false);
+
+    useEffect(() => {
+        // Simulate loading time or wait for actual content to load
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+            // Add a delay before hiding the loader to ensure animation completes
+            setTimeout(() => {
+                setLoaderHidden(true);
+            }, 500); // 500ms delay after loading completes
+        }, 2000); // 2 seconds loading time
+
+        return () => {
+            clearTimeout(timer);
+        };
+    }, []);
+
     return (
-       <>
-         <Header />
+        <>
+            <Header />
             <div className="block">
                 <div id="smooth-wrapper" className="block">
                     <div id="smooth-content">
-                        {/* <div
-                            className="loader-wrap z-60 fixed top-0 left-0 bg-black pointer-events-none"
-                            style={{ opacity: 0, display: "none", zIndex: -1 }}
-                        ></div> */}
+                      
+                        {/* Loader with proper animation states */}
+                        {!loaderHidden && (
+                            <div 
+                                className={`loader-wrap z-60 fixed top-0 left-0 bg-black ${
+                                    isLoading ? '' : 'hidden'
+                                }`}
+                                style={{ 
+                                    pointerEvents: 'none'
+                                }}
+                            ></div>
+                        )}
 
-                        {/* <div className="loader-wrap z-60 fixed top-0 left-0 bg-black pointer-events-none"></div> */}
                         <main className="main-field home-animation">
                             <BannerSection />
                             <AboutSection />
@@ -60,8 +87,8 @@ export default function HopePage() {
                     </div>
                 </div>
             </div>
-       
-       </>
-       
+
+        </>
+
     )
 }

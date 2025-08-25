@@ -1,7 +1,7 @@
 // Contact Form Handler
 console.log('Contact JavaScript file loaded successfully!');
 
-const CONFIG = {
+const CONTACT_CONFIG = {
     ANIMATION_DURATION: 300,
     SEARCH_DEBOUNCE: 300
 };
