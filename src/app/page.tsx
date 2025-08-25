@@ -1,4 +1,4 @@
-import HopePage from "./components/hopepage";
+import HopePage from "./components/homepage";
 
 export default function Home() {
   return (

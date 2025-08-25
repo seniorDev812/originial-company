@@ -1,20 +1,40 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import Footer from "../components/footer";
-import Header from "../components/header";
-import Icon from "../components/ui/Icon";
-import Script from 'next/script';
+import Header from "./header-hopepage";
+import Footer from "./footer";
+import BannerSection from './hopepage/banner-section';
+import AboutSection from './hopepage/about-section';
+import MapSection from './hopepage/map-section';
+import BrandsSection from './hopepage/brans-section';
+import Icon from './ui/Icon';
 import '../../../public/css/style.css';
 import '../../../public/css/tailwind.css';
-import Career from "../components/career/page";
 
-export default function CareerPage() {
+export default function HomePage() {
+    const [isLoading, setIsLoading] = useState(true);
+    const [loaderHidden, setLoaderHidden] = useState(false);
+    
     // Refs for performance optimization
     const tickingRef = useRef(false);
-    const styleRef = useRef<HTMLStyleElement | null>(null);
+    const styleRef = useRef(null);
 
-    // Scroll-based header background management for career page
+    useEffect(() => {
+        // Simulate loading time or wait for actual content to load
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+            // Add a delay before hiding the loader to ensure animation completes
+            setTimeout(() => {
+                setLoaderHidden(true);
+            }, 500); // 500ms delay after loading completes
+        }, 2000); // 2 seconds loading time
+
+        return () => {
+            clearTimeout(timer);
+        };
+    }, []);
+
+    // Scroll-based header background management
     useEffect(() => {
         // Inject dynamic CSS styles
         const injectStyles = () => {
@@ -28,30 +48,26 @@ export default function CareerPage() {
                 .header-bottom[style*="background-color"] {
                     background-color: var(--header-bg-color) !important;
                 }
-                .header-bottom.bg-active {
-                    background-color: #5f5f5f !important;
-                }
-                .header-bottom.bg-transparent {
-                    background-color: transparent !important;
-                }
             `;
             document.head.appendChild(style);
             styleRef.current = style;
         };
 
-        // Get DOM elements for career page
+        // Get DOM elements
         const getElements = () => {
             return {
                 headerBottom: document.querySelector('.header-bottom'),
-                heroSection: document.querySelector('.hero'),
-                currentPositionsSection: document.querySelector('#current-positions'),
-                contactSection: document.querySelector('.contact-section'),
+                bannerField: document.querySelector('.banner-field.relative.overflow-hidden.isolate'),
+                carouselField: document.querySelector('.carousel-field.relative.w-full'),
+                aboutField: document.querySelector('.about-field'),
+                worldMapSection: document.querySelector('.world-map-section'),
+                brandsField: document.querySelector('.brands-field'),
                 footerField: document.querySelector('.footer-field')
             };
         };
 
         // Check if element is in viewport
-        const isElementInViewport = (element: Element | null): boolean => {
+        const isElementInViewport = (element) => {
             if (!element) return false;
             const rect = element.getBoundingClientRect();
             return (
@@ -60,57 +76,41 @@ export default function CareerPage() {
             );
         };
 
-        // Check if element has been passed (completely out of view)
-        const hasPassedElement = (element: Element | null): boolean => {
-            if (!element) return false;
-            const rect = element.getBoundingClientRect();
-            return rect.bottom < 0;
-        };
-
-        // Update header background based on scroll position for career page
+        // Update header background based on scroll position
         const updateHeaderBackground = () => {
             try {
                 const elements = getElements();
-                const { headerBottom, heroSection, currentPositionsSection, contactSection, footerField } = elements;
+                const { headerBottom, bannerField, carouselField, aboutField, worldMapSection, brandsField, footerField } = elements;
 
                 if (!headerBottom) {
                     return;
                 }
 
-                // Check section visibility
-                const heroInView = isElementInViewport(heroSection);
-                const positionsInView = isElementInViewport(currentPositionsSection);
-                const contactInView = isElementInViewport(contactSection);
+                const bannerInView = isElementInViewport(bannerField);
+                const carouselInView = isElementInViewport(carouselField);
+                const aboutInView = isElementInViewport(aboutField);
+                const worldMapInView = isElementInViewport(worldMapSection);
+                const brandsInView = isElementInViewport(brandsField);
                 const footerInView = isElementInViewport(footerField);
 
-                // Apply background color logic for career page
-                if (heroInView) {
-                    // Hero section is visible - keep header transparent
-                    headerBottom.classList.remove('bg-active');
-                    headerBottom.classList.add('bg-transparent');
-                    (headerBottom as HTMLElement).style.setProperty('--header-bg-color', 'transparent');
-                    (headerBottom as HTMLElement).style.backgroundColor = 'transparent';
-                } else if (positionsInView || contactInView) {
-                    // Job positions or contact section is visible - add background
-                    headerBottom.classList.add('bg-active');
-                    headerBottom.classList.remove('bg-transparent');
-                    (headerBottom as HTMLElement).style.setProperty('--header-bg-color', '#5f5f5f');
-                    (headerBottom as HTMLElement).style.backgroundColor = '#5f5f5f';
-                } else if (footerInView && !positionsInView && !contactInView) {
-                    // Footer is visible and no content sections are visible - transparent
-                    headerBottom.classList.remove('bg-active');
-                    headerBottom.classList.add('bg-transparent');
-                    (headerBottom as HTMLElement).style.setProperty('--header-bg-color', 'transparent');
-                    (headerBottom as HTMLElement).style.backgroundColor = 'transparent';
-                } else {
-                    // Default state - add background for better readability
-                    headerBottom.classList.add('bg-active');
-                    headerBottom.classList.remove('bg-transparent');
-                    (headerBottom as HTMLElement).style.setProperty('--header-bg-color', '#5f5f5f');
-                    (headerBottom as HTMLElement).style.backgroundColor = '#5f5f5f';
+                // Apply background color based on section visibility
+                if ((aboutInView || worldMapInView || brandsInView) && !bannerInView) {
+                    // Gray background for content sections
+                    headerBottom.style.setProperty('--header-bg-color', '#5f5f5f');
+                    headerBottom.style.backgroundColor = '#5f5f5f';
+                    headerBottom.style.transition = 'background-color 0.3s ease';
+                } else if (bannerInView) {
+                    // Transparent background for banner section
+                    headerBottom.style.setProperty('--header-bg-color', 'transparent');
+                    headerBottom.style.backgroundColor = 'transparent';
+                } else if (footerInView && !aboutInView && !worldMapInView && !brandsInView) {
+                    // Transparent background for footer section
+                    headerBottom.style.setProperty('--header-bg-color', 'transparent');
+                    headerBottom.style.backgroundColor = 'transparent';
                 }
+                // Default case: no explicit background change needed
             } catch (error) {
-                console.error('Career header background update failed:', error);
+                console.error('Header background update failed:', error);
             }
         };
 
@@ -135,9 +135,6 @@ export default function CareerPage() {
                 if (elements.headerBottom) {
                     updateHeaderBackground();
                     window.addEventListener('scroll', requestTick, { passive: true });
-                    window.addEventListener('resize', () => {
-                        setTimeout(updateHeaderBackground, 100);
-                    }, { passive: true });
                 } else {
                     // Retry after a short delay if elements aren't ready
                     setTimeout(checkElements, 100);
@@ -154,7 +151,6 @@ export default function CareerPage() {
         return () => {
             clearTimeout(initTimer);
             window.removeEventListener('scroll', requestTick);
-            window.removeEventListener('resize', updateHeaderBackground);
             
             // Remove injected styles
             if (styleRef.current) {
@@ -165,10 +161,9 @@ export default function CareerPage() {
             // Reset header background
             const headerBottom = document.querySelector('.header-bottom');
             if (headerBottom) {
-                headerBottom.classList.remove('bg-active', 'bg-transparent');
-                (headerBottom as HTMLElement).style.removeProperty('--header-bg-color');
-                (headerBottom as HTMLElement).style.removeProperty('background-color');
-                (headerBottom as HTMLElement).style.removeProperty('transition');
+                headerBottom.style.removeProperty('--header-bg-color');
+                headerBottom.style.removeProperty('background-color');
+                headerBottom.style.removeProperty('transition');
             }
         };
     }, []); // Empty dependency array - runs once on mount
@@ -179,8 +174,24 @@ export default function CareerPage() {
             <div className="block">
                 <div id="smooth-wrapper" className="block">
                     <div id="smooth-content">
-                      <main className="main-field home-animation">
-                        <Career />
+                      
+                        {/* Loader with proper animation states */}
+                        {!loaderHidden && (
+                            <div 
+                                className={`loader-wrap z-60 fixed top-0 left-0 bg-black ${
+                                    isLoading ? '' : 'hidden'
+                                }`}
+                                style={{ 
+                                    pointerEvents: 'none'
+                                }}
+                            ></div>
+                        )}
+
+                        <main className="main-field home-animation">
+                            <BannerSection />
+                            <AboutSection />
+                            <MapSection />
+                            <BrandsSection />
                         </main>
                         <Footer />
                     </div>
@@ -204,7 +215,7 @@ export default function CareerPage() {
                         <button className="accept-cookie close-cookie button group/button w-full flex justify-center items-center gap-[20px] bg-primary px-[20px] hover:bg-secondary h-[45px] md:h-[50px] duration-350">
                             <div className="text text-[13px] text-white font-medium relative z-2 whitespace-nowrap duration-350">Accept Cookies</div>
                         </button>
-                        <button className="close-cookie button group/button w-full flex justify-center items-center gap-[20px] bg-transparent px-[20px] h-[45px] md:h-[50px] duration-350 border border-solid border-primary">
+                        <button className="close-cookie close-cookie button group/button w-full flex justify-center items-center gap-[20px] bg-transparent px-[20px] h-[45px] md:h-[50px] duration-350 border border-solid border-primary">
                             <div className="text text-[13px] text-white/50 duration-350 font-medium relative z-2 whitespace-nowrap group-hover/button:text-white">Reject</div>
                         </button>
                     </div>
@@ -214,10 +225,8 @@ export default function CareerPage() {
                     </div>
                 </div>
             </div>
-            <Script
-                src="/components/career/career.js"
-                strategy="afterInteractive"
-            />
+
         </>
+
     )
 }

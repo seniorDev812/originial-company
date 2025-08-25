@@ -1,3 +1,6 @@
+"use client";
+
+import React, { useState, useEffect, useRef } from 'react';
 import Footer from "../components/footer";
 import Header from "../components/header";
 import Icon from "../components/ui/Icon";
@@ -6,9 +9,149 @@ import '../../../public/css/tailwind.css';
 import ProductFilter from "../components/product/page";
 
 export default function ProductPage() {
+    // Refs for performance optimization
+    const tickingRef = useRef(false);
+    const styleRef = useRef<HTMLStyleElement | null>(null);
+
+    // Scroll-based header background management for product page
+    useEffect(() => {
+        // Inject dynamic CSS styles
+        const injectStyles = () => {
+            if (styleRef.current) return; // Prevent duplicate injection
+            
+            const style = document.createElement('style');
+            style.textContent = `
+                .header-bottom {
+                    transition: background-color 0.3s ease !important;
+                }
+                .header-bottom[style*="background-color"] {
+                    background-color: var(--header-bg-color) !important;
+                }
+            `;
+            document.head.appendChild(style);
+            styleRef.current = style;
+        };
+
+        // Get DOM elements for product page
+        const getElements = () => {
+            return {
+                headerBottom: document.querySelector('.header-bottom'),
+                seiProductFilter: document.querySelector('.sei-product-filter'),
+                footerField: document.querySelector('.footer-field')
+            };
+        };
+
+        // Check if element is in viewport
+        const isElementInViewport = (element: Element | null): boolean => {
+            if (!element) return false;
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.bottom >= 0
+            );
+        };
+
+        // Update header background based on scroll position for product page
+        const updateHeaderBackground = () => {
+            try {
+                const elements = getElements();
+                const { headerBottom, seiProductFilter, footerField } = elements;
+
+                if (!headerBottom) {
+                    console.warn('Header bottom element not found, scroll functionality disabled');
+                    return;
+                }
+
+                // Check section visibility
+                const productFilterInView = isElementInViewport(seiProductFilter);
+                const footerInView = isElementInViewport(footerField);
+
+                // Apply background color logic for product page
+                if (productFilterInView) {
+                    // Product filter is visible - use gray background
+                    (headerBottom as HTMLElement).style.setProperty('--header-bg-color', '#5f5f5f');
+                    (headerBottom as HTMLElement).style.backgroundColor = '#5f5f5f';
+                    (headerBottom as HTMLElement).style.transition = 'background-color 0.3s ease';
+                } else if (footerInView) {
+                    // Footer is visible - make header transparent
+                    (headerBottom as HTMLElement).style.setProperty('--header-bg-color', 'transparent');
+                    (headerBottom as HTMLElement).style.backgroundColor = 'transparent';
+                    (headerBottom as HTMLElement).style.transition = 'background-color 0.3s ease';
+                } else {
+                    // Default gray background for other sections
+                    (headerBottom as HTMLElement).style.setProperty('--header-bg-color', '#5f5f5f');
+                    (headerBottom as HTMLElement).style.backgroundColor = '#5f5f5f';
+                    (headerBottom as HTMLElement).style.transition = 'background-color 0.3s ease';
+                }
+            } catch (error) {
+                console.error('Product header background update failed:', error);
+            }
+        };
+
+        // Throttled scroll handler for performance
+        const requestTick = () => {
+            if (!tickingRef.current) {
+                requestAnimationFrame(() => {
+                    updateHeaderBackground();
+                    tickingRef.current = false;
+                });
+                tickingRef.current = true;
+            }
+        };
+
+        // Initialize
+        const initializeHeaderBackground = () => {
+            injectStyles();
+            
+            // Wait for DOM elements to be available
+            const checkElements = () => {
+                const elements = getElements();
+                if (elements.headerBottom) {
+                    updateHeaderBackground();
+                    window.addEventListener('scroll', requestTick, { passive: true });
+                    window.addEventListener('resize', () => {
+                        setTimeout(updateHeaderBackground, 100);
+                    }, { passive: true });
+                } else {
+                    // Retry after a short delay if elements aren't ready
+                    setTimeout(checkElements, 100);
+                }
+            };
+            
+            checkElements();
+        };
+
+        // Start initialization after a short delay to ensure DOM is ready
+        const initTimer = setTimeout(initializeHeaderBackground, 100);
+
+        // Additional check after a longer delay to handle any late-loading content
+        const lateInitTimer = setTimeout(updateHeaderBackground, 500);
+
+        // Cleanup function
+        return () => {
+            clearTimeout(initTimer);
+            clearTimeout(lateInitTimer);
+            window.removeEventListener('scroll', requestTick);
+            window.removeEventListener('resize', updateHeaderBackground);
+            
+            // Remove injected styles
+            if (styleRef.current) {
+                document.head.removeChild(styleRef.current);
+                styleRef.current = null;
+            }
+            
+            // Reset header background
+            const headerBottom = document.querySelector('.header-bottom');
+            if (headerBottom) {
+                (headerBottom as HTMLElement).style.removeProperty('--header-bg-color');
+                (headerBottom as HTMLElement).style.removeProperty('background-color');
+                (headerBottom as HTMLElement).style.removeProperty('transition');
+            }
+        };
+    }, []); // Empty dependency array - runs once on mount
+
     return (
         <>
-        
             <Header />
             <div className="block">
                 <div id="smooth-wrapper" className="block">
