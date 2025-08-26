@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
-import { MantineProvider, ColorSchemeScript } from "@mantine/core";
-import { Notifications } from "@mantine/notifications";
+import { ColorSchemeScript } from "@mantine/core";
+import ThemeController from "./components/ThemeController";
 
 export const metadata: Metadata = {
   title: "Seen Group - We Supply Your Growth",
@@ -59,10 +59,9 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased font-sans">
-        <MantineProvider defaultColorScheme="dark" theme={{ primaryColor: 'blue' }}>
-          <Notifications position="top-right" />
+        <ThemeController>
           {children}
-        </MantineProvider>
+        </ThemeController>
       </body>
     </html>
   );

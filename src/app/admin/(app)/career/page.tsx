@@ -498,7 +498,7 @@ export default function CareerManagement() {
         </Card>
       </SimpleGrid>
 
-      <Tabs value={activeTab} onChange={setActiveTab} variant="pills" color="blue">
+      <Tabs value={activeTab} onChange={setActiveTab} variant="pills" color="brand">
         <Tabs.List mb="xl">
           <Tabs.Tab value="jobs" leftSection={<IconBriefcase size={16} />}>
             Job Listings ({jobs.length})
@@ -514,7 +514,7 @@ export default function CareerManagement() {
               <Title order={3} c="white">Job Listings</Title>
               <Button 
                 leftSection={<IconPlus size={16} />} 
-                color="blue"
+                color="brand"
                 onClick={() => openJobModal()}
               >
                 Add New Job
@@ -630,7 +630,7 @@ export default function CareerManagement() {
                   onChange={(value) => setFilterStatus(value || 'all')}
                   w={150}
                 />
-                <Button variant="light" leftSection={<IconRefresh size={16} />}>
+                <Button variant="light" color="brand" leftSection={<IconRefresh size={16} />}>
                   Refresh
                 </Button>
               </Group>
@@ -696,7 +696,7 @@ export default function CareerManagement() {
                           <Tooltip label="View Details">
                             <ActionIcon 
                               variant="light" 
-                              color="blue"
+                              color="brand"
                               onClick={() => {
                                 setSelectedApplication(application);
                                 setApplicationModalOpen(true);
@@ -771,7 +771,7 @@ export default function CareerManagement() {
                   total={Math.ceil(filteredApplications.length / itemsPerPage)}
                   value={applicationsPage}
                   onChange={setApplicationsPage}
-                  color="blue"
+                  color="brand"
                 />
               </Group>
             )}

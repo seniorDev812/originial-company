@@ -42,7 +42,7 @@ export default function AdminAppLayout({ children }: { children: React.ReactNode
           <Group gap={8} wrap="nowrap">
             <Burger opened={opened} onClick={toggle} hiddenFrom="sm" aria-label="Toggle navigation" />
             {!collapsed && (
-              <MantineImage src="/imgs/site-logo.png" alt="Seen Group Logo" h={24} w="auto" fit="contain" />
+              <MantineImage src="/imgs/site-logo.png" alt="Seen Group Logo" h={60} w="auto" fit="contain" />
             )}
             <Title order={5} hiddenFrom="sm">SG Admin</Title>
             <Title order={4} visibleFrom="sm">Seen Group Admin</Title>
@@ -71,7 +71,7 @@ export default function AdminAppLayout({ children }: { children: React.ReactNode
                     component={Link}
                     href={l.href}
                     variant={active ? "filled" : "subtle"}
-                    color={active ? "blue" : "gray"}
+                    color={active ? "brand" : "gray"}
                     size="md"
                     aria-label={l.label}
                   >
