@@ -1,36 +1,132 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Seen Group - We Supply Your Growth
 
-## Getting Started
+A modern Next.js application for Seen Group, providing comprehensive solutions to supply your business growth with innovative products and services.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Modern UI/UX**: Built with Next.js 15.5.0 and React 19.1.0
+- **Responsive Design**: Mobile-first approach with custom CSS
+- **Admin Panel**: Secure authentication system with dashboard
+- **Performance Optimized**: GSAP animations, Swiper carousels, and optimized loading
+- **SEO Ready**: Complete metadata and Open Graph support
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 15.5.0 (App Router)
+- **Language**: TypeScript & JavaScript
+- **Styling**: Custom CSS with CSS Variables
+- **Icons**: Lucide React & Font Awesome 6.4.0
+- **Animations**: GSAP 3.13.0
+- **Carousels**: Swiper 11.2.10
+- **Deployment**: Vercel
+
+## 📁 Project Structure
+
+```
+src/
+├── app/
+│   ├── admin/                 # Admin panel
+│   │   ├── dashboard/         # Admin dashboard
+│   │   ├── page.tsx          # Admin sign-in
+│   │   └── admin.css         # Admin styles
+│   ├── api/                  # API routes
+│   │   └── admin/            # Admin API endpoints
+│   ├── components/           # React components
+│   │   ├── homepage.jsx      # Main homepage
+│   │   ├── header-hopepage.tsx # Header component
+│   │   └── ui/               # UI components
+│   ├── globals.css           # Global styles
+│   └── layout.tsx            # Root layout
+├── middleware.ts             # Route protection
+└── public/                   # Static assets
+    └── imgs/                 # Images including favicon.ico
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Node.js 18+ 
+- npm or yarn
 
-## Learn More
+### Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd seen-group-website
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Run the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-## Deploy on Vercel
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔐 Admin Access
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **URL**: `/admin`
+- **Email**: `admin@seengroup.com`
+- **Password**: `admin123`
+
+## 🎨 Customization
+
+### Branding
+- Update metadata in `src/app/layout.tsx`
+- Modify admin credentials in `src/app/api/admin/auth/route.ts`
+- Update favicon in `public/imgs/favicon.ico`
+
+### Styling
+- Main styles: `src/app/globals.css`
+- Admin styles: `src/app/admin/admin.css`
+- Component-specific styles in respective directories
+
+## 📱 Responsive Design
+
+The application is fully responsive with breakpoints:
+- Mobile: < 480px
+- Tablet: 480px - 640px
+- Desktop: > 640px
+
+## 🔒 Security Features
+
+- HTTP-only cookies for authentication
+- Route protection with middleware
+- Input validation and sanitization
+- Secure password handling (production ready)
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+1. Connect your repository to Vercel
+2. Configure environment variables if needed
+3. Deploy automatically on push
+
+### Manual Deployment
+```bash
+npm run build
+npm start
+```
+
+## 📄 License
+
+© 2024 Seen Group. All rights reserved.
+
+## 🤝 Support
+
+For support and inquiries, contact Seen Group at [contact@seengroup.com](mailto:contact@seengroup.com)
+
+---
+
+**Seen Group - We Supply Your Growth** 🌱

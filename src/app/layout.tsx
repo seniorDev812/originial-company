@@ -1,10 +1,44 @@
 import type { Metadata } from "next";
 import "./globals.css";
-
+import "@mantine/core/styles.css";
+import "@mantine/notifications/styles.css";
+import { MantineProvider, ColorSchemeScript } from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
 
 export const metadata: Metadata = {
-  title: "Sherwood Electromotion Inc. (SEI)",
-  description: "Industrial electrical equipment and locomotive components",
+  title: "Seen Group - We Supply Your Growth",
+  description: "Seen Group provides comprehensive solutions to supply your business growth with innovative products and services.",
+  icons: {
+    icon: '/imgs/favicon.ico',
+    shortcut: '/imgs/favicon.ico',
+    apple: '/imgs/favicon.ico',
+  },
+  keywords: [
+    "Seen Group",
+    "business growth",
+    "supply solutions",
+    "innovation",
+    "products",
+    "services"
+  ],
+  authors: [{ name: "Seen Group" }],
+  creator: "Seen Group",
+  publisher: "Seen Group",
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: "Seen Group - We Supply Your Growth",
+    description: "Seen Group provides comprehensive solutions to supply your business growth with innovative products and services.",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Seen Group - We Supply Your Growth",
+    description: "Seen Group provides comprehensive solutions to supply your business growth with innovative products and services.",
+  },
 };
 
 export default function RootLayout({
@@ -13,8 +47,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" data-mantine-color-scheme="dark">
       <head>
+        <ColorSchemeScript defaultColorScheme="dark" />
         <link 
           rel="stylesheet" 
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
@@ -24,8 +59,10 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased font-sans">
-
-        {children}
+        <MantineProvider defaultColorScheme="dark" theme={{ primaryColor: 'blue' }}>
+          <Notifications position="top-right" />
+          {children}
+        </MantineProvider>
       </body>
     </html>
   );

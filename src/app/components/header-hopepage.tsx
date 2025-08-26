@@ -198,6 +198,7 @@ export default function Header({ headerBgColor = 'transparent' }: HeaderProps) {
                                         onClick={closeMenu}
                                         className="absolute top-[30px] right-[30px] z-[30] text-white hover:text-primary transition-colors duration-300"
                                         aria-label="Close menu"
+                                        style={{paddingTop: "30px"}}
                                     >
                                         <Icon 
                                             name="icon-cross" 

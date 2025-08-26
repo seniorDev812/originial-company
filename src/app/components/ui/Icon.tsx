@@ -36,7 +36,8 @@ import {
   ListTodo,
   Star,
   Calendar,
-  Briefcase
+  Briefcase,
+  Lock
 } from 'lucide-react';
 
 interface IconProps {
@@ -87,6 +88,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string; size?: n
   'icon-star': Star,
   'icon-calendar': Calendar,
   'icon-briefcase': Briefcase,
+  'icon-lock': Lock,
   // Social media variants
   'icon-facebook-2': Facebook,
   'icon-linkedin-2': Linkedin,

@@ -99,12 +99,14 @@ export default function Header({ headerBgColor = 'transparent' }: HeaderProps) {
                                 {/* Close button */}
                                 <button 
                                     onClick={toggleMenu}
+                                    style={{paddingTop: "30px"}}
                                     className="absolute top-30 right-30 text-white hover:text-primary duration-350 z-50"
                                 >
                                     <Icon 
                                         name="icon-close" 
                                         className="text-[24px] h-[24px]" 
                                         size={24}
+                                        
                                     />
                                 </button>
                                 <div className="bottom-wrapper flex h-full justify-between md:order-2 flex-col pt-70 md:pt-60 sm:pt-30 xsm:pt-20">
